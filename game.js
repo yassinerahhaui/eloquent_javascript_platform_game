@@ -124,10 +124,10 @@ var levelChars = {
 	"#": "wall",
 	"+": "lava",
 	"@": Player,
-	o: Coin,
+	"o": Coin,
 	"=": Lava,
 	"|": Lava,
-	v: Lava,
+	"v": Lava,
 };
 
 var simpleLevel = new Level(simpleLevelPlan);
