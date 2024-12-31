@@ -88,7 +88,6 @@ var levelChars = {
 	"v": "lava",
 };
 
-var simpleLevel = new Level(simpleLevelPlan);
 
 function elt(name, attrs, ...children) {
 	let dom = document.createElement(name);
@@ -100,8 +99,6 @@ function elt(name, attrs, ...children) {
 	}
 	return dom;
 }
-
-
 
 
 var DOMDisplay = class DOMDisplay {
@@ -228,9 +225,6 @@ function overlap(actor1, actor2) {
 	);
 }
 
-
-
-
 var wobbleSpeed = 8,
 	wobbleDist = 0.07;
 
@@ -290,9 +284,10 @@ function runAnimation(frameFunc) {
 }
 
 // Running the level
-function runLevel(level, Display) {
-	let display = new Display(document.body, level);
+function runLevel(level) { // desplay the level
+	let display = new DOMDisplay(document.body, level);
 	let state = State.start(level);
+	console.log(state)
 	let ending = 1;
 	return new Promise((resolve) => {
 		runAnimation((time) => {
@@ -312,10 +307,9 @@ function runLevel(level, Display) {
 	});
 }
 
-async function runGame(plans, Display) {
-	for (let level = 0; level < plans.length; ) {
-		let status = await runLevel(new Level(plans[level]), Display);
-		if (status == "won") level++;
-	}
+var simpleLevel = new Level(simpleLevelPlan);
+
+async function runGame() {
+	let status = await runLevel(simpleLevel);
 	console.log("You've won!");
 }
