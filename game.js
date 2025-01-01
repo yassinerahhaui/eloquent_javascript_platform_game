@@ -1,11 +1,11 @@
 var simpleLevelPlan = `
 ......................
 ..#................#..
-..#..............=.#..
-..#.........o.o....#..
+..#................#..
+..#................#..
 ..#.@......#####...#..
 ..#####............#..
-......#++++++++++++#..
+......#............#..
 ......##############..
 ......................`;
 
@@ -80,12 +80,7 @@ Player.prototype.size = new Vec(0.8, 1.5);
 var levelChars = {
 	".": "empty",
 	"#": "wall",
-	"+": "lava",
 	"@": Player,
-	"o": "Coin",
-	"=": "lava",
-	"|": "lava",
-	"v": "lava",
 };
 
 
@@ -104,7 +99,7 @@ function elt(name, attrs, ...children) {
 var DOMDisplay = class DOMDisplay {
 	constructor(parent, level) {
 		this.dom = elt("div", { class: "game" }, drawGrid(level));
-		this.actorLayer = null;
+		this.actorLayer = null; // dom element --> div
 		parent.appendChild(this.dom);
 	}
 
@@ -287,22 +282,10 @@ function runAnimation(frameFunc) {
 function runLevel(level) { // desplay the level
 	let display = new DOMDisplay(document.body, level);
 	let state = State.start(level);
-	console.log(state)
-	let ending = 1;
 	return new Promise((resolve) => {
 		runAnimation((time) => {
 			state = state.update(time, arrowKeys);
 			display.syncState(state);
-			if (state.status == "playing") {
-				return true;
-			} else if (ending > 0) {
-				ending -= time;
-				return true;
-			} else {
-				display.clear();
-				resolve(state.status);
-				return false;
-			}
 		});
 	});
 }
@@ -311,5 +294,6 @@ var simpleLevel = new Level(simpleLevelPlan);
 
 async function runGame() {
 	let status = await runLevel(simpleLevel);
+	runGame()
 	console.log("You've won!");
 }
