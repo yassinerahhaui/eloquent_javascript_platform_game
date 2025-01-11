@@ -74,7 +74,7 @@ var Player = class Player {
 	}
 };
 
-Player.prototype.size = new Vec(0.8, 1.5);
+Player.prototype.size = new Vec(0.7, 1.2);
 
 var Lava = class Lava {
 	constructor(pos, speed, reset) {
@@ -155,7 +155,7 @@ var DOMDisplay = class DOMDisplay {
 	}
 };
 
-var scale = 20;
+var scale = 50;
 
 function drawGrid(level) {
 	return elt(

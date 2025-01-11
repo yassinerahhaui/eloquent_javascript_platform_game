@@ -1,35 +1,82 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	background-color: #000000;
+	background-image: url("/assets/images/bg.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-clip: padding-box;
+	background-position: center;
+	height: 100dvh;
+	overflow: hidden;
+}
 .background {
-	background: rgb(52, 166, 251);
+	background: #020405e0;
+	backdrop-filter: blur(20px);
 	table-layout: fixed;
 	border-spacing: 0;
 }
+
 .background td {
 	padding: 0;
 }
+
 .lava {
-	background: rgb(255, 100, 100);
+	background: #34a6fb;
+	background-image: url("/assets/images/lava.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 2px;
+	box-shadow: 0 0 .4rem black, 0 0 .4rem black;
 }
+
 .wall {
-	background: white;
+	background-image: url("/assets/images/brick_block.png");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
+
 .actor {
 	position: absolute;
 }
+
 .coin {
-	background: rgb(241, 229, 89);
+	background-image: url("/assets/images/coin.png");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
+
 .player {
-	background: rgb(64, 64, 64);
+	/* background: #34a6fb; */
+	background-image: url("/assets/images/monsters/1 Pink_Monster/Pink_Monster.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	opacity: 1;
+	/* transition: opacity 3s ease-in-out; */
+	/* border: 2px solid black; */
 }
+
 .lost .player {
-	background: rgb(160, 64, 64);
+	filter: drop-shadow(0 0 4px #680502);
+	filter: grayscale(1);
+	opacity: .1;
 }
+
 .won .player {
-	box-shadow: -4px -7px 8px white, 4px -7px 8px white;
+	filter: drop-shadow(0px 4px yellow);
 }
+
 .game {
+	box-shadow: 0 0 .4rem #960524, 0 0 .4rem #741010;
+	
 	overflow: hidden;
-	max-width: 600px;
-	max-height: 450px;
+	border-radius: 4px;
+	max-width: 700px;
+	max-height: 550px;
 	position: relative;
+	margin: 100px auto;
 }
